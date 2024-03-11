@@ -29,6 +29,6 @@ acepta los siguientes filtros:
   - /auto/precio_lt={precio} lista todos los autos que tengan precio igual o inferior
 - /auto/tipo={auto/pickup/comercial/suv/crossover} lista todos los autos de ese tipo
 
-/caracteristicas/ lista todas las caracteristicas
+/caracteristica/ lista todas las caracteristicas
 /ficha/ lista todas las fichas
 /admin/ nos permite ingresas al django admin

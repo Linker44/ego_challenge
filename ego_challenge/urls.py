@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from auto.views import AutoViewSet, FichaViewSet, CaracteristicasViewSet
+from auto.views import AutoViewSet, FichaViewSet, CaracteristicaViewSet
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,7 +25,7 @@ router = routers.DefaultRouter()
 
 router.register(r'auto', AutoViewSet)
 router.register(r'ficha', FichaViewSet)
-router.register(r'caracteristicas', CaracteristicasViewSet)
+router.register(r'caracteristicas', CaracteristicaViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

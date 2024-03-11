@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from auto.serializers import AutoSerializer, FichaSerializer, CaracteristicasSerializer
-from auto.models import Auto, Ficha, Caracteristicas
+from auto.serializers import AutoSerializer, FichaSerializer, CaracteristicaSerializer
+from auto.models import Auto, Ficha, Caracteristica
 from django_filters.rest_framework import DjangoFilterBackend
 from auto.filters import AutoFilter
 
@@ -19,6 +19,6 @@ class FichaViewSet(viewsets.ModelViewSet):
     serializer_class = FichaSerializer
 
 
-class CaracteristicasViewSet(viewsets.ModelViewSet):
-    queryset = Caracteristicas.objects.all()
-    serializer_class = CaracteristicasSerializer
+class CaracteristicaViewSet(viewsets.ModelViewSet):
+    queryset = Caracteristica.objects.all()
+    serializer_class = CaracteristicaSerializer

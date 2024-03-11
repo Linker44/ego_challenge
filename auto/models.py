@@ -30,7 +30,7 @@ class Ficha(models.Model):
         return self.titulo
 
 
-class Caracteristicas(models.Model):
+class Caracteristica(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField(max_length=200)
     ficha = models.ForeignKey(

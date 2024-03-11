@@ -1,5 +1,5 @@
 from django.contrib import admin
-from auto.models import Auto, Ficha, Caracteristicas
+from auto.models import Auto, Ficha, Caracteristica
 
 # Register your models here.
 
@@ -12,10 +12,10 @@ class FichaAdmin(admin.ModelAdmin):
     pass
 
 
-class CaracteristicasAdmin(admin.ModelAdmin):
+class CaracteristicaAdmin(admin.ModelAdmin):
     pass
 
 
 admin.site.register(Auto, AutoAdmin)
 admin.site.register(Ficha, FichaAdmin)
-admin.site.register(Caracteristicas, CaracteristicasAdmin)
+admin.site.register(Caracteristica, CaracteristicaAdmin)

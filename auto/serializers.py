@@ -1,16 +1,16 @@
 from rest_framework import serializers
-from auto.models import Auto, Ficha, Caracteristicas
+from auto.models import Auto, Ficha, Caracteristica
 
 
-class CaracteristicasSerializer(serializers.HyperlinkedModelSerializer):
+class CaracteristicaSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = Caracteristicas
+        model = Caracteristica
         fields = '__all__'
 
 
 class FichaSerializer(serializers.HyperlinkedModelSerializer):
-    caracteristicas = CaracteristicasSerializer(many=True, read_only=True)
+    caracteristicas = CaracteristicaSerializer(many=True, read_only=True)
 
     class Meta:
         model = Ficha

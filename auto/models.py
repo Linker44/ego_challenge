@@ -22,9 +22,22 @@ class Auto(models.Model):
 
 
 class Ficha(models.Model):
+    hero = models.OneToOneField(
+        "Hero", on_delete=models.SET_NULL, null=True, blank=True, related_name="ficha")
+
+    def __str__(self):
+        name = f"Ficha self.id"
+        if self.hero:
+            name = f"Ficha {self.hero.pre_titulo}"
+        return name
+
+
+class Hero(models.Model):
+    pre_titulo = models.CharField(max_length=100)
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField(max_length=200)
-    image = models.ImageField(upload_to='images/ficha/', null=True, blank=True)
+    image = models.ImageField(
+        upload_to='images/ficha/hero', null=True, blank=True)
 
     def __str__(self):
         return self.titulo
@@ -33,10 +46,22 @@ class Ficha(models.Model):
 class Caracteristica(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField(max_length=200)
+    image = models.ImageField(
+        upload_to='images/ficha/caractericas', null=True, blank=True)
     ficha = models.ForeignKey(
         "Ficha", on_delete=models.CASCADE, related_name="caracteristicas")
+
+    def __str__(self):
+        return self.titulo
+
+
+class Prestacion(models.Model):
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField(max_length=200)
     image = models.ImageField(
-        upload_to='images/caracteristicas/', null=True, blank=True)
+        upload_to='images/ficha/prestaciones', null=True, blank=True)
+    ficha = models.ForeignKey(
+        "Ficha", on_delete=models.CASCADE, related_name="prestaciones")
 
     def __str__(self):
         return self.titulo

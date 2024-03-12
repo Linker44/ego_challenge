@@ -1,8 +1,22 @@
 from rest_framework import serializers
-from auto.models import Auto, Ficha, Caracteristica
+from auto.models import Auto, Ficha, Caracteristica, Hero, Prestacion
 
 
-class CaracteristicaSerializer(serializers.HyperlinkedModelSerializer):
+class PrestacionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Prestacion
+        fields = "__all__"
+
+
+class HeroSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Hero
+        fields = '__all__'
+
+
+class CaracteristicaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Caracteristica
@@ -10,7 +24,9 @@ class CaracteristicaSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class FichaSerializer(serializers.HyperlinkedModelSerializer):
+    hero = HeroSerializer(read_only=True)
     caracteristicas = CaracteristicaSerializer(many=True, read_only=True)
+    prestaciones = PrestacionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Ficha
@@ -19,7 +35,7 @@ class FichaSerializer(serializers.HyperlinkedModelSerializer):
 
 class AutoSerializer(serializers.HyperlinkedModelSerializer):
 
-    ficha = FichaSerializer(many=False, read_only=True)
+    ficha = FichaSerializer(read_only=True)
 
     class Meta:
         model = Auto

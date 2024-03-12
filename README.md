@@ -29,6 +29,92 @@ acepta los siguientes filtros:
   - /auto/precio_lt={precio} lista todos los autos que tengan precio igual o inferior
 - /auto/tipo={auto/pickup/comercial/suv/crossover} lista todos los autos de ese tipo
 
-/caracteristica/ lista todas las caracteristicas
+ej:
+{
+"url": "http://127.0.0.1:8000/auto/1/",
+"ficha": {
+"url": "http://127.0.0.1:8000/ficha/1/",
+"hero": {
+"id": 1,
+"pre_titulo": "toyota camri",
+"titulo": "El mejor Auto que podes soniar",
+"descripcion": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+"image": null
+},
+"caracteristicas": [
+{
+"id": 1,
+"titulo": "manual",
+"descripcion": "lorem ipsum",
+"image": null,
+"ficha": 1
+},
+{
+"id": 2,
+"titulo": "Vidrios reforzados",
+"descripcion": "dolor isem",
+"image": null,
+"ficha": 1
+}
+],
+"prestaciones": [
+{
+"id": 1,
+"titulo": "Nuevos motores",
+"descripcion": "lorem ipsum dolor iset",
+"image": null,
+"ficha": 1
+}
+]
+},
+"nombre": "toyota camri",
+"tipo": "auto",
+"fecha_auto": "2024-03-10",
+"precio": 30000,
+"image": null
+},
+
 /ficha/ lista todas las fichas
+ej:
+
+{
+"url": "http://127.0.0.1:8000/ficha/1/",
+"hero": {
+"id": 1,
+"pre_titulo": "toyota camri",
+"titulo": "El mejor Auto que podes soniar",
+"descripcion": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+"image": null
+},
+"caracteristicas": [
+{
+"id": 1,
+"titulo": "manual",
+"descripcion": "lorem ipsum",
+"image": null,
+"ficha": 1
+},
+{
+"id": 2,
+"titulo": "Vidrios reforzados",
+"descripcion": "dolor isem",
+"image": null,
+"ficha": 1
+}
+],
+"prestaciones": [
+{
+"id": 1,
+"titulo": "Nuevos motores",
+"descripcion": "lorem ipsum dolor iset",
+"image": null,
+"ficha": 1
+}
+]
+}
+
+Tanto /auto/ como /ficha/ permiten la creacion y actualizacion de ficha.
+
+/ficha/tambien acepta la asignacion de un auto con su id mediante "auto": {id}.
+
 /admin/ nos permite ingresas al django admin

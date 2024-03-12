@@ -97,6 +97,7 @@ class FichaViewSet(viewsets.ModelViewSet):
         hero_data = request.data.pop('hero')
         caracteristicas_data = request.data.pop('caracteristicas', [])
         prestaciones_data = request.data.pop('prestaciones', [])
+        auto_id = request.data.pop('auto', None)
 
         ficha_serializer = self.get_serializer(data=request.data)
         ficha_serializer.is_valid(raise_exception=True)
@@ -107,6 +108,10 @@ class FichaViewSet(viewsets.ModelViewSet):
 
         ficha = ficha_serializer.save(hero=hero)
 
+        if auto_id:
+            auto = Auto.objects.get(auto_id)
+            auto.ficha = ficha
+            auto.save()
         for caracteristica_data in caracteristicas_data:
             caracteristica_data['ficha'] = ficha.id
             caracteristica_serializer = CaracteristicaSerializer(
@@ -129,6 +134,7 @@ class FichaViewSet(viewsets.ModelViewSet):
         hero_data = request.data.pop('hero', None)
         caracteristicas_data = request.data.pop('caracteristicas', [])
         prestaciones_data = request.data.pop('prestaciones', [])
+        auto_id = request.data.pop('auto', None)
 
         if hero_data:
             hero_instance = instance.hero
@@ -139,6 +145,11 @@ class FichaViewSet(viewsets.ModelViewSet):
         ficha_serializer = self.get_serializer(instance, data=request.data)
         ficha_serializer.is_valid(raise_exception=True)
         ficha = ficha_serializer.save()
+
+        if auto_id:
+            auto = Auto.objects.get(auto_id)
+            auto.ficha = ficha
+            auto.save()
 
         for caracteristica_data in caracteristicas_data:
             caracteristica_id = caracteristica_data.get('id')
